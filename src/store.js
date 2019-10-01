@@ -20,20 +20,26 @@ const addItem = function (item) {
 //   }
 // };
 
-const findAndToggleChecked = function (id) {
-  const currentItem = this.findById(id);
-  currentItem.checked = !currentItem.checked;
+// const findAndToggleChecked = function (id) {
+//   const currentItem = this.findById(id);
+//   currentItem.checked = !currentItem.checked;
+// };
+
+// const findAndUpdateName = function (id, name) {
+//   try {
+//     item.validateName(name);
+//     const currentItem = this.findById(id);
+//     currentItem.name = name;
+//   } catch (e) {
+//     console.log('Cannot update name: ' + e.message);
+//   }
+// };
+
+const findAndUpdate = function (id, newData) {
+  let currentItem = this.items.find(item => item.id === id);
+  Object.assign(currentItem, newData);
 };
 
-const findAndUpdateName = function (id, name) {
-  try {
-    item.validateName(name);
-    const currentItem = this.findById(id);
-    currentItem.name = name;
-  } catch (e) {
-    console.log('Cannot update name: ' + e.message);
-  }
-};
 
 const findAndDelete = function (id) {
   this.items = this.items.filter(currentItem => currentItem.id !== id);
@@ -48,8 +54,9 @@ export default {
   hideCheckeditems,
   findById,
   addItem,
-  findAndToggleChecked,
-  findAndUpdateName,
+  // findAndToggleChecked,
+  // findAndUpdateName,
   findAndDelete,
-  toggleCheckedFilter
+  toggleCheckedFilter,
+  findAndUpdate,
 };
